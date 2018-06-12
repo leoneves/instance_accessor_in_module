@@ -4,7 +4,7 @@ require_relative 'parser_factory'
 
 module BaseProcessor
   def process(json_message)
-    message = ParserFactory.new.for(self.class.factory_name).parse(json_message)
+    message = ParserFactory.new.for(self.class.parser_name).parse(json_message)
     process_recurring(message)
   end
 
@@ -13,10 +13,10 @@ module BaseProcessor
   end
 
   module ClassMethods
-    attr_reader :factory_name
+    attr_reader :parser_name
 
-    def use_factory(factory_name)
-      @factory_name = factory_name
+    def use_parser(factory_name)
+      @parser_name = factory_name
     end
   end
 

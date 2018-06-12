@@ -5,10 +5,10 @@ require_relative 'parser/recurring_new_reload_parser'
 
 class ParserFactory
   def for(factory_name)
-    select_factory.dig(:"#{factory_name}").new
+    select_parser.dig(:"#{factory_name}").new
   end
 
-  def select_factory
+  def select_parser
     {
       recurring_reload: RecurringReloadParser,
       recurring_new: RecurringNewReloadParser
