@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'parse_factory'
+require_relative 'parser_factory'
 
 module BaseProcessor
   def process(json_message)
-    message = ParseFactory.new.for(self.class.factory_name).parse(json_message)
+    message = ParserFactory.new.for(self.class.factory_name).parse(json_message)
     process_recurring(message)
   end
 
